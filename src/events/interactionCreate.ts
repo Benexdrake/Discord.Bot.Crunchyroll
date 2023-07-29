@@ -2,15 +2,12 @@ import { APITextInputComponent, CommandInteractionOptionResolver, ModalSubmitInt
 import { client } from "..";
 import { Event } from "../client/Event";
 import { ExtendedInteraction } from "../interfaces/ExtendedInteraction";
-import { LfgModal } from "../modal/lfgModal";
-import { LfgLogic } from "../logic/lfgLogic";
 
 export default new Event("interactionCreate", async (interaction) => {    
     // Chat Input Commands
     if (interaction.isCommand()) {
         const command = client.commands.get(interaction.commandName);
-        if(!command?.name.includes('modal'))
-            await interaction.deferReply();
+        await interaction.deferReply();
         if (!command)
             return interaction.followUp("You have used a non existent command");
         
@@ -25,22 +22,4 @@ export default new Event("interactionCreate", async (interaction) => {
             interaction: interaction as ExtendedInteraction
         });
     }
-
-    if(interaction.isModalSubmit())
-    {
-        if (interaction.customId === 'lfgmodal')
-        {
-            await new LfgLogic().LFGModalCommand(interaction);
-        }
-    }
-
-    if(interaction.isButton())
-    {
-        if(interaction.customId === 'lfg')
-        {
-            const modal = new LfgModal().build();
-            await interaction.showModal(modal);
-        }
-    }
-
 });

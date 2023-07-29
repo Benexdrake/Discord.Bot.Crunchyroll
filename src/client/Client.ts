@@ -66,8 +66,6 @@ export class ExtendedClient extends Client
         });
 
         this.on("ready", () => {
-            this.user?.setActivity({name: 'den Usern auf die Finger', type: ActivityType.Watching, url: 'https://github.com/Benexdrake/DiscordTS'})
-
             for(const guild of this.guilds.cache)
             {   
                 this.registerCommands({

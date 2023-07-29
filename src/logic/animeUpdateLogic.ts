@@ -22,7 +22,9 @@ export class AnimeUpdateLogic
                 })
               });
 
+            
             const loadAnimes = await this.Start(message,value);
+
             console.log(`Found ${loadAnimes.length} Animes`)
 
             await instance.get('https://localhost:5000/api/Crunchyroll',).then(x => 
@@ -80,24 +82,24 @@ export class AnimeUpdateLogic
     private async Start(message:Message,dir:string) : Promise<Anime[]>
     {
         let animes:Anime[] = [];
-        const browser = await puppeteer.launch({headless: true});
+        const browser = await puppeteer.launch({headless: 'new'});
         const page:Page = await browser.newPage();
         await page.setViewport({width: 0, height: 0, deviceScaleFactor: 1});
         
         const response = await fetch(dir);
         const data = await response.text();
-
         await page.setContent(data)
-
+        
         const browserCards = await page.$$("div.browse-card");
         
         await message.edit(`Looking for Data in File`);
+
         let n = 0;
         for(const card of browserCards)
         {
             n++;
             if(n % 100 === 0)
-                message.edit(`Looking for Data in File - ${n}/${browserCards.length}`)
+                await message.edit(`Looking for Data in File - ${n}/${browserCards.length}`)
             const anime = await this.GetAnime(card);
             if(anime.title !== '')
                 animes.push(anime);
