@@ -12,7 +12,7 @@ export class AnimeEmbed
              .setColor(Colors.Orange)
              .setURL(anime.url)
              .setImage(anime.imageUrl)
-             .setDescription(anime.description);
+             .setDescription(anime.description || ' ');
              
         if(anime.publisher !== '')
             embed.addFields({name: 'Publisher', value: anime.publisher})
@@ -23,16 +23,16 @@ export class AnimeEmbed
         embed.addFields([
             {
                 name:'Rating',
-                value: anime.rating.toString(),
+                value: anime.rating.toString() || '',
                 inline: true
             },
             {
                 name: 'Seasons',
-                value: anime.seasons.toString()
+                value: anime.seasons.toString() || ''
             },
             {
                 name: 'Episodes',
-                value: anime.episodes.toString()
+                value: anime.episodes.toString() || ''
             }])
 
         return embed;

@@ -69,7 +69,6 @@ export class AnimeUpdateLogic
                         a.tags = anime?.tags;
                     if(anime?.publisher !== undefined)
                         a.publisher = anime?.publisher;
-                    a.imageUrl = anime.imageUrl;
                 }
                     await instance.post('https://localhost:5000/api/Crunchyroll',a);
             }
