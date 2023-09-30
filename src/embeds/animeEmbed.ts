@@ -5,6 +5,7 @@ export class AnimeEmbed
 {
     Build(anime:Anime) : EmbedBuilder
     {
+        
         const embed = new EmbedBuilder();
 
         embed.setTitle(anime.title)
