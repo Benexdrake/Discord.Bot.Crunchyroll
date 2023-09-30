@@ -18,7 +18,7 @@ jobs:
     with:
       APP_NAME: Crunchyroll
       SERVER_PORT: 22
-      DEPLOY_PATH: '/home/crunchyroll'
+      DEPLOY_PATH: '/home/Crunchyroll'
     secrets:
       IP: ${{secrets.SERVER_IP}}
       SSH: ${{secrets.SERVER_SSH_KEY}}
