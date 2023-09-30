@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-stage:
-    uses: benexdrake/github_actions/.github/workflows/discord_bot/build.yml@main
+    uses: benexdrake/github_actions/.github/workflows/build-discord-bot.yml@main
     with:
       NODE_VERSION: 20
       BUILD_FOLDER: '.next'
