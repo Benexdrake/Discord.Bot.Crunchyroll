@@ -11,6 +11,9 @@ jobs:
     uses: benexdrake/github_actions/.github/workflows/discord-build.yml@main
     with:
       NODE_VERSION: 20
+    secrets:
+      TOKEN: ${{secrets.DISCORD_TOKEN}}
+      BASEURL: ${{secrets.BASEURL}}
       
   deploy-stage:
     needs: build-stage
