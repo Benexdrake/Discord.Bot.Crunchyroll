@@ -1,4 +1,4 @@
-import { APITextInputComponent, CommandInteractionOptionResolver, ModalSubmitInteraction } from "discord.js";
+import { CommandInteractionOptionResolver } from "discord.js";
 import { client } from "..";
 import { Event } from "../client/Event";
 import { ExtendedInteraction } from "../interfaces/ExtendedInteraction";

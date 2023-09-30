@@ -5,6 +5,8 @@ import { Anime } from "../models/Crunchyroll/anime";
 import puppeteer, { ElementHandle, Page } from "puppeteer";
 import { Message } from "discord.js";
 
+import {baseUrl} from "../../config.json"
+
 export class AnimeUpdateLogic
 {
     async Update(interaction:ExtendedInteraction)
@@ -25,9 +27,7 @@ export class AnimeUpdateLogic
             
             const loadAnimes = await this.Start(message,value);
 
-            console.log(`Found ${loadAnimes.length} Animes`)
-
-            await instance.get('https://localhost:5000/api/Crunchyroll',).then(x => 
+            await instance.get(baseUrl,).then(x => 
             {
                 for(const a of x.data)
                 {
@@ -70,7 +70,7 @@ export class AnimeUpdateLogic
                     if(anime?.publisher !== undefined)
                         a.publisher = anime?.publisher;
                 }
-                    await instance.post('https://localhost:5000/api/Crunchyroll',a);
+                    await instance.post(baseUrl,{anime:a,pw:"sonicthehedgehog"});
             }
             message.edit('Done!!!')
         }

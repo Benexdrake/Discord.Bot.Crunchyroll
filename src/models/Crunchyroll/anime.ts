@@ -9,6 +9,7 @@ export class Anime
     language:string = "";
     url:string = "";
     imageUrl:string = "";
+    imageUrl_wide:string = "";
     tags:string[] = [];
     publisher:string = "";
 }

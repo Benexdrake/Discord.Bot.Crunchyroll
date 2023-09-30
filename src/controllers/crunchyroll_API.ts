@@ -1,6 +1,7 @@
 import axios from "axios";
 import https from 'https'
 import { Anime } from "../models/Crunchyroll/anime";
+import {baseUrl} from "../../config.json";
 
 export class Crunchyroll_API
 {
@@ -13,7 +14,7 @@ export class Crunchyroll_API
           });
 
         const id = url.split('/')[5];
-        const anime = await instance.get(`https://localhost:5000/api/Crunchyroll/id?id=${id}`).then(x => {return x.data});
+        const anime = await instance.get(`${baseUrl}/id?id=${id}`).then(x => { return x.data});
         return anime;
     }
 }

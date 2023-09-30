@@ -1,0 +1,26 @@
+name: Main
+on:
+  push:
+    branches: [main]
+    paths-ignore: 
+      - .github/**
+
+jobs:
+  build-stage:
+    uses: benexdrake/github_actions/.github/workflows/discord_bot/build.yml@main
+    with:
+      NODE_VERSION: 20
+      BUILD_FOLDER: '.next'
+      
+  deploy-stage:
+    needs: build-stage
+    uses: benexdrake/github_actions/.github/workflows/deploy.yml@main
+    with:
+      APP_NAME: Crunchyroll
+      SERVER_PORT: 22
+      DEPLOY_PATH: '/home/crunchyroll'
+    secrets:
+      IP: ${{secrets.SERVER_IP}}
+      SSH: ${{secrets.SERVER_SSH_KEY}}
+      USERNAME: ${{secrets.SERVER_USERNAME}}
+      PASSWORD: ${{secrets.SERVER_PASSWORD}}
