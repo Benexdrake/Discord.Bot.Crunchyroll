@@ -14,7 +14,7 @@ export class Crunchyroll_API
           });
 
         const id = url.split('/')[5];
-        const anime = await instance.post(`http://localhost:3000/api/crunchyroll/GY8VEQ95Y`, '123456').then(x => { return x.data});
+        const anime = await instance.get(`http://localhost:3000/api/crunchyroll/GY8VEQ95Y`).then(x => { return x.data});
         return anime;
     }
 }
