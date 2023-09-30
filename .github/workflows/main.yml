@@ -6,14 +6,8 @@ on:
       - .github/**
   workflow_dispatch:
 
-jobs:
-  build-stage:
-    uses: benexdrake/github_actions/.github/workflows/build-discord-bot.yml@main
-    with:
-      NODE_VERSION: 20
-      
+jobs:   
   deploy-stage:
-    needs: build-stage
     uses: benexdrake/github_actions/.github/workflows/deploy.yml@main
     with:
       APP_NAME: Crunchyroll
