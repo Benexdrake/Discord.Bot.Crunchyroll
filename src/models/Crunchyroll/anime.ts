@@ -6,10 +6,11 @@ export class Anime
     rating:number = 0;
     seasons:number = 0;
     episodes:number = 0;
-    language:string = "";
     url:string = "";
-    imageUrl:string = "";
-    imageUrl_wide:string = "";
+    imageUrl_card:string = "";
+    imageUrl_banner:string = "";
     tags:string[] = [];
     publisher:string = "";
+    audios: string[] = [];
+    subTitles: string[] = [];
 }
